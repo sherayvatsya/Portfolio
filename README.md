@@ -2,11 +2,8 @@
 
 Interactive 3D developer portfolio with a keyboard where every keycap is a skill. Built with Next.js, React, TypeScript, GSAP, and Motion.
 
-Forked from [Naresh Khatri's 3d-portfolio](https://github.com/Naresh-Kritri/3d-portfolio) template and customized for [Sheray Vatsya](https://github.com/sherayvatsya).
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/sherayvatsya/3d-portfolio-next)
 
-![Portfolio Preview](./public/assets/logo-dark.webp)
 
 ## ✨ Features
 
