@@ -153,4 +153,3 @@ This site is deployed on **Vercel**. To deploy your own:
 
 This project is open source and available under the [MIT License](LICENSE).
 
-Built on the excellent [3d-portfolio](https://github.com/Naresh-Khatri/3d-portfolio) template by [Naresh Khatri](https://github.com/Naresh-Khatri). If you use this template, a credit or link back to the original repo would be much appreciated ❤️
