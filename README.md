@@ -1,9 +1,6 @@
 # 🚀 Sheray Vatsya — 3D Portfolio
 
-Interactive 3D developer portfolio with a keyboard where every keycap is a skill. Built with Next.js, React, TypeScript, GSAP, and Motion.
-
-
-
+Modern 3D developer portfolio with immersive visuals, cinematic animations, and a responsive user experience. Built using Next.js, React, TypeScript, GSAP and Motion.
 
 ## ✨ Features
 
