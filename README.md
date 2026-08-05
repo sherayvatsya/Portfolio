@@ -28,6 +28,12 @@ Interactive 3D developer portfolio with a keyboard where every keycap is a skill
 
 ---
 
+### Live Demo
+
+🔗 **Portfolio:** https://portfolio-nu-navy-20.vercel.app/#skills
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -74,6 +80,7 @@ Interactive 3D developer portfolio with a keyboard where every keycap is a skill
 5. Open [http://localhost:3000](http://localhost:3000) and see the magic ✨
 
 ---
+
 
 ## 🎨 Personalization
 
@@ -130,7 +137,8 @@ These features activate automatically when the `NEXT_PUBLIC_WS_URL` environment 
 
 ## 🚀 Deployment
 
-[![Deploy with Vercel](https://portfolio-nu-navy-20.vercel.app/#skills)](https://vercel.com/new/clone?repository-url=https://github.com/sherayvatsya/3d-portfolio-next)
+🔗 **Portfolio:** https://portfolio-nu-navy-20.vercel.app/#skills
+
 
 This site is deployed on **Vercel**. To deploy your own:
 
