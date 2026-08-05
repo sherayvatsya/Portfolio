@@ -62,20 +62,14 @@ const brand = (title: string, file: string): Skill => ({
 });
 
 const PROJECT_SKILLS = {
-  next: brand("Next.js", "nextdotjs-mono.svg"),
+  html: brand("HTML5", "html5-mono.svg"),
+  css: brand("CSS3", "css3-mono.svg"),
+  js: brand("JavaScript", "javascript-mono.svg"),
   react: brand("React.js", "react-mono.svg"),
-  ts: brand("TypeScript", "typescript-mono.svg"),
-  tailwind: brand("Tailwind", "tailwind-css-mono.svg"),
   node: brand("Node.js", "nodedotjs-mono.svg"),
-  python: brand("Python", "python-mono.svg"),
-  postgres: brand("PostgreSQL", "postgresql-mono.svg"),
+  express: brand("Express.js", "express-mono.svg"),
   mongo: brand("MongoDB", "mongodb-mono.svg"),
-  aiSDK: brand("Vercel AI SDK", "vercel-mono.svg"),
-  anthropic: brand("Anthropic Claude", "anthropic-mono.svg"),
-  mistral: brand("Mistral AI", "mistral-ai-mono.svg"),
-  sockerio: brand("Socket.io", "socketdotio-mono.svg"),
-  docker: brand("Docker", "docker-mono.svg"),
-  aws: brand("AWS", "cloudflare-mono.svg"),
+  python: brand("Python", "python-mono.svg"),
 };
 
 export type Project = {
@@ -92,56 +86,23 @@ export type Project = {
 
 const projects: Project[] = [
   {
-    id: "callhq",
-    category: "Voice AI",
-    title: "CallHQ.ai",
-    src: `${BASE_PATH}/callhq/callhq.png`,
-    screenshots: ["callhq.png"],
-    live: "https://callhq.ai",
+    id: "hostel-complaint",
+    category: "Web Application",
+    title: "Hostel Complaint Management System",
+    src: "/assets/projects-screenshots/hostelcare.png",
+    screenshots: [],
+    live: "https://hostel-complaint-system-amber.vercel.app/",
+    github: "https://github.com/sherayvatsya/Hostel-Complaint-System",
     skills: {
       frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
+        PROJECT_SKILLS.html,
+        PROJECT_SKILLS.css,
+        PROJECT_SKILLS.js,
         PROJECT_SKILLS.react,
-        PROJECT_SKILLS.tailwind,
       ],
       backend: [
         PROJECT_SKILLS.node,
-        PROJECT_SKILLS.python,
-        PROJECT_SKILLS.aiSDK,
-        PROJECT_SKILLS.anthropic,
-      ],
-    },
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono">
-            AI-powered voice agents for sales, customer engagement, and lead
-            generation — natural, human-like phone conversations at scale.
-          </TypographyP>
-          <ProjectsLinks live={this.live} />
-          <SlideShow images={[`${BASE_PATH}/callhq/callhq.png`]} />
-        </div>
-      );
-    },
-  },
-  {
-    id: "broki",
-    category: "Marketplace",
-    title: "Broki",
-    src: `${BASE_PATH}/broki/broki.png`,
-    screenshots: ["broki.png"],
-    live: "https://broki.in",
-    skills: {
-      frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.react,
-        PROJECT_SKILLS.tailwind,
-      ],
-      backend: [
-        PROJECT_SKILLS.node,
-        PROJECT_SKILLS.postgres,
+        PROJECT_SKILLS.express,
         PROJECT_SKILLS.mongo,
       ],
     },
@@ -149,121 +110,88 @@ const projects: Project[] = [
       return (
         <div>
           <TypographyP className="font-mono">
-            One-stop marketplace for food &amp; beverage — cloud kitchens,
-            restaurants, and commercial spaces across Delhi NCR.
+            A deployed web application replacing a paper-based complaint process with logging, tracking, and resolving hostel maintenance issues.
           </TypographyP>
           <ProjectsLinks live={this.live} />
-          <SlideShow images={[`${BASE_PATH}/broki/broki.png`]} />
         </div>
       );
     },
   },
   {
-    id: "whatsapp",
-    category: "Messaging",
-    title: "CallHQ WhatsApp",
-    src: `${BASE_PATH}/whatsapp/whatsapp.png`,
-    screenshots: ["whatsapp.png"],
-    live: "https://whatsapp.callhq.ai",
-    skills: {
-      frontend: [PROJECT_SKILLS.react, PROJECT_SKILLS.ts, PROJECT_SKILLS.tailwind],
-      backend: [PROJECT_SKILLS.node, PROJECT_SKILLS.sockerio],
-    },
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono">
-            WhatsApp integration layer for CallHQ — automate customer
-            conversations and workflows over WhatsApp Business.
-          </TypographyP>
-          <ProjectsLinks live={this.live} />
-          <SlideShow images={[`${BASE_PATH}/whatsapp/whatsapp.png`]} />
-        </div>
-      );
-    },
-  },
-  {
-    id: "orrdr",
-    category: "Commerce",
-    title: "Orrdr",
-    src: `${BASE_PATH}/orrdr/orrdr.png`,
-    screenshots: ["orrdr.png"],
-    live: "https://orrdr.com",
-    skills: {
-      frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.react,
-        PROJECT_SKILLS.tailwind,
-      ],
-      backend: [PROJECT_SKILLS.node, PROJECT_SKILLS.postgres],
-    },
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono">
-            Commerce platform for ordering and fulfillment.
-          </TypographyP>
-          <ProjectsLinks live={this.live} />
-          <SlideShow images={[`${BASE_PATH}/orrdr/orrdr.png`]} />
-        </div>
-      );
-    },
-  },
-  {
-    id: "otoma8",
-    category: "AI Platform",
-    title: "Otoma8",
-    src: `${BASE_PATH}/otoma8/otoma8.png`,
-    screenshots: ["otoma8.png"],
-    live: "https://otoma8.com",
-    skills: {
-      frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.react,
-        PROJECT_SKILLS.tailwind,
-      ],
-      backend: [
-        PROJECT_SKILLS.node,
-        PROJECT_SKILLS.python,
-        PROJECT_SKILLS.aiSDK,
-      ],
-    },
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono">
-            AI platform co-founded alongside CallHQ and Broki — building the next
-            generation of business automation tools.
-          </TypographyP>
-          <ProjectsLinks live={this.live} />
-          <SlideShow images={[`${BASE_PATH}/otoma8/otoma8.png`]} />
-        </div>
-      );
-    },
-  },
-  {
-    id: "tesorobysania",
-    category: "E-commerce",
-    title: "Tesoro by Sania",
-    src: PLACEHOLDER_IMG,
+    id: "todo-list",
+    category: "Web Application",
+    title: "To-Do List App",
+    src: "/assets/projects-screenshots/taskflow.png",
     screenshots: [],
-    live: "https://tesorobysania.com",
+    live: "https://to-do-list-app-beta-neon.vercel.app/signin.html",
+    github: "https://github.com/sherayvatsya/TO-DO-LIST-APP",
     skills: {
       frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.react,
-        PROJECT_SKILLS.tailwind,
+        PROJECT_SKILLS.html,
+        PROJECT_SKILLS.css,
+        PROJECT_SKILLS.js,
       ],
-      backend: [PROJECT_SKILLS.node],
+      backend: [],
     },
     get content() {
       return (
         <div>
           <TypographyP className="font-mono">
-            Premium e-commerce storefront for Tesoro by Sania.
+            A deployed task manager featuring user sign-in, persistent state storage across sessions, and complete CRUD operations.
+          </TypographyP>
+          <ProjectsLinks live={this.live} />
+        </div>
+      );
+    },
+  },
+  {
+    id: "inside-computer",
+    category: "Educational",
+    title: "Inside a Computer",
+    src: "/assets/projects-screenshots/corex.png",
+    screenshots: [],
+    live: "https://inside-a-computer-jet.vercel.app",
+    github: "https://github.com/sherayvatsya/Inside-a-Computer",
+    skills: {
+      frontend: [
+        PROJECT_SKILLS.html,
+        PROJECT_SKILLS.css,
+        PROJECT_SKILLS.js,
+      ],
+      backend: [],
+    },
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono">
+            An interactive educational web app offering a fully responsive, visual walkthrough of hardware components and computer systems architecture.
+          </TypographyP>
+          <ProjectsLinks live={this.live} />
+        </div>
+      );
+    },
+  },
+  {
+    id: "linear-search",
+    category: "Visualization",
+    title: "Linear Search Visualizer",
+    src: "/assets/projects-screenshots/linear-search.png",
+    screenshots: [],
+    live: "https://sherayvatsya.github.io/Linaer-Search/applications.html",
+    github: "https://github.com/sherayvatsya/Linear-Search-Visualizer",
+    skills: {
+      frontend: [
+        PROJECT_SKILLS.html,
+        PROJECT_SKILLS.css,
+        PROJECT_SKILLS.js,
+      ],
+      backend: [],
+    },
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono">
+            An animated step-by-step visualizer for the Linear Search algorithm with interactive user controls for playback speed and color-coded state transitions.
           </TypographyP>
           <ProjectsLinks live={this.live} />
         </div>

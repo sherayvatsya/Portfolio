@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   ResponsiveDialog,
   ResponsiveDialogContent,
@@ -9,7 +9,7 @@ import { FloatingDock } from "../ui/floating-dock";
 import { ScrollArea } from "../ui/scroll-area";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 
 import projects, { Project } from "@/data/projects";
 import { SectionHeader } from "./section-header";
@@ -18,12 +18,40 @@ import SectionWrapper from "../ui/section-wrapper";
 import ScrollingPreview from "../scrolling-preview";
 
 const ProjectsSection = () => {
+  const defaultImage = projects[0]?.src || null;
+  const [activeImage, setActiveImage] = useState<string | null>(defaultImage);
+
   return (
-    <SectionWrapper id="projects" className="max-w-7xl mx-auto md:min-h-[130vh] px-4">
+    <SectionWrapper id="projects" className="max-w-7xl mx-auto md:min-h-[130vh] px-4 relative">
+      {/* <AnimatePresence mode="wait">
+        {activeImage && (
+          <motion.div
+            key={activeImage}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.15 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 -z-10 pointer-events-none overflow-hidden rounded-3xl"
+          >
+            <div
+              className="absolute inset-0 bg-cover bg-center blur-sm"
+              style={{ backgroundImage: `url(${activeImage})` }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+          </motion.div>
+        )}
+      </AnimatePresence> */}
+
       <SectionHeader id="projects" title="Projects" />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          <div
+            key={project.id}
+            onMouseEnter={() => setActiveImage(project.src)}
+            onMouseLeave={() => setActiveImage(defaultImage)}
+          >
+            <ProjectCard project={project} />
+          </div>
         ))}
       </div>
     </SectionWrapper>

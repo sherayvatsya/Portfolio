@@ -1,0 +1,124 @@
+---
+title: "Backend Authentication with JWT"
+publishedAt: "2026-07-24"
+summary: "A step-by-step guide to implementing secure user authentication and authorization in Node.js and Express using JSON Web Tokens."
+tags:
+  - "Node.js"
+  - "Express"
+  - "Security"
+  - "Backend"
+---
+
+User authentication is a critical component of almost any modern web application. Whether you are building an e-commerce site, a social network, or a hostel complaint management system, you need a secure way to verify who your users are and what they are allowed to do.
+
+During my recent projects, I implemented backend authentication using Node.js, Express, and **JSON Web Tokens (JWT)**. Here is a breakdown of how JWT works and how I implemented it securely.
+
+## What is a JWT?
+
+A JSON Web Token (JWT) is an open standard that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed.
+
+A JWT consists of three parts separated by dots (`.`):
+1. **Header:** Contains the token type and signing algorithm.
+2. **Payload:** Contains the claims (e.g., user ID, role).
+3. **Signature:** Used to verify that the sender of the JWT is who it says it is and to ensure that the message wasn't changed along the way.
+
+## The Authentication Flow
+
+1. **Registration:** The user sends their credentials (email, password). The server hashes the password using `bcrypt` and stores the user in the database.
+2. **Login:** The user sends their credentials. The server verifies the password. If valid, the server generates a JWT containing the user's ID and sends it back to the client.
+3. **Authorized Requests:** For subsequent requests to protected routes, the client includes the JWT in the `Authorization` header. The server verifies the token's signature. If valid, the request proceeds.
+
+## Implementation Details
+
+Here are the key snippets from a typical Express backend implementation.
+
+### 1. Hashing Passwords (User Registration)
+
+Never store plain-text passwords. I use `bcryptjs` to salt and hash passwords before saving them to MongoDB.
+
+```javascript
+const bcrypt = require('bcryptjs');
+
+// Inside registration controller
+const salt = await bcrypt.genSalt(10);
+const hashedPassword = await bcrypt.hash(req.body.password, salt);
+
+const newUser = new User({
+  email: req.body.email,
+  password: hashedPassword
+});
+await newUser.save();
+```
+
+### 2. Generating the JWT (User Login)
+
+Upon successful login, we generate a token using the `jsonwebtoken` package. 
+
+```javascript
+const jwt = require('jsonwebtoken');
+
+// After verifying password
+const payload = {
+  user: {
+    id: user.id
+  }
+};
+
+jwt.sign(
+  payload,
+  process.env.JWT_SECRET,
+  { expiresIn: '1h' },
+  (err, token) => {
+    if (err) throw err;
+    res.json({ token });
+  }
+);
+```
+
+### 3. Protecting Routes (Middleware)
+
+To protect private routes, I created a custom middleware function that intercepts the request, checks for the token, and verifies it.
+
+```javascript
+const jwt = require('jsonwebtoken');
+
+module.exports = function(req, res, next) {
+  // Get token from header
+  const token = req.header('x-auth-token');
+
+  // Check if not token
+  if (!token) {
+    return res.status(401).json({ msg: 'No token, authorization denied' });
+  }
+
+  // Verify token
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded.user; // Attach user payload to request
+    next(); // Move to the next middleware/route handler
+  } catch (err) {
+    res.status(401).json({ msg: 'Token is not valid' });
+  }
+};
+```
+
+You can then apply this middleware to any route that requires authentication:
+
+```javascript
+const auth = require('../middleware/auth');
+
+router.get('/profile', auth, async (req, res) => {
+  // Only accessible if auth middleware passes
+  const user = await User.findById(req.user.id).select('-password');
+  res.json(user);
+});
+```
+
+## Security Considerations
+
+While JWTs are powerful, they come with security caveats:
+- **Keep Secrets Secret:** Never hardcode your `JWT_SECRET`. Always use environment variables.
+- **Don't Store Sensitive Data:** The payload is Base64 encoded, not encrypted. Anyone can decode it. Do not put passwords or private data in the payload.
+- **Token Storage:** On the frontend, storing tokens in `localStorage` makes them vulnerable to XSS attacks. A more secure approach is storing them in `HttpOnly` cookies, though this requires CSRF protection.
+
+Understanding authentication is a milestone for any backend developer. Implementing JWTs taught me crucial lessons about security, stateless architectures, and API design.

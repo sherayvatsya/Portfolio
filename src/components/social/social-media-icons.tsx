@@ -18,17 +18,21 @@ const BUTTONS = [
     href: config.social.linkedin,
     icon: <SiLinkedin size={"24"} color={"#fff"} />,
   },
-  {
+  // @ts-ignore
+  config.social.twitter && {
     name: "Twitter",
+    // @ts-ignore
     href: config.social.twitter,
     icon: <SiX size={"24"} color={"#fff"} />,
   },
-  {
+  // @ts-ignore
+  config.social.instagram && {
     name: "Instagram",
+    // @ts-ignore
     href: config.social.instagram,
     icon: <SiInstagram size={"24"} color={"#fff"} />,
   },
-];
+].filter(Boolean) as { name: string; href: string; icon: React.JSX.Element }[];
 
 const SocialMediaButtons = () => {
   const ref = useRef<HTMLDivElement>(null);

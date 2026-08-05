@@ -1,12 +1,12 @@
-# 🚀 Akash Malhotra — 3D Portfolio
+# 🚀 Sheray Vatsya — 3D Portfolio
 
 Interactive 3D developer portfolio with a keyboard where every keycap is a skill. Built with Next.js, React, TypeScript, GSAP, and Motion.
 
-Forked from [Naresh Khatri's 3d-portfolio](https://github.com/Naresh-Khatri/3d-portfolio) template and customized for [Akash Malhotra](https://github.com/akashrmalhotra).
+Forked from [Naresh Khatri's 3d-portfolio](https://github.com/Naresh-Kritri/3d-portfolio) template and customized for [Sheray Vatsya](https://github.com/sherayvatsya).
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/akashrmalhotra/3d-portfolio-next)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/sherayvatsya/3d-portfolio-next)
 
-![Portfolio Preview](./public/assets/projects-screenshots/callhq/callhq.png)
+![Portfolio Preview](./public/assets/logo-dark.webp)
 
 ## ✨ Features
 
@@ -43,7 +43,7 @@ Forked from [Naresh Khatri's 3d-portfolio](https://github.com/Naresh-Khatri/3d-p
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/akashrmalhotra/3d-portfolio-next.git
+    git clone https://github.com/sherayvatsya/3d-portfolio-next.git
     cd 3d-portfolio-next
     ```
 
@@ -84,16 +84,15 @@ All personal info is centralized in [`src/data/config.ts`](src/data/config.ts):
 
 ```ts
 const config = {
-  title: "Akash Malhotra | Co-Founder & Engineer",
-  author: "Akash Malhotra",
-  email: "contact@broki.in",
-  site: "https://broki.in",
-  githubUsername: "akashrmalhotra",
+  title: "Sheray Vatsya | Web Developer & Software Developer",
+  author: "Sheray Vatsya",
+  email: "sherayvatsya@gmail.com",
+  site: "https://sherayvatsya.github.io/3d-portfolio-next",
+  githubUsername: "sherayvatsya",
   githubRepo: "3d-portfolio-next",
   social: {
-    linkedin: "https://www.linkedin.com/in/akashrmalhotra",
-    github: "https://github.com/akashrmalhotra",
-    // ...
+    linkedin: "https://linkedin.com/in/sherayvatsya",
+    github: "https://github.com/sherayvatsya",
   },
 };
 ```
@@ -104,7 +103,7 @@ Other files to customize:
 |---|---|
 | `src/data/projects.tsx` | Projects, screenshots, descriptions, and tech stacks |
 | `src/data/constants.ts` | Skills list and work experience |
-| `public/Akash_Malhotra_Resume.pdf` | Résumé PDF for the resume page |
+| `public/Sheray_Vatsya_Resume.pdf` | Résumé PDF for the resume page |
 | `public/assets/projects-screenshots/` | Project screenshots (`callhq/`, `broki/`, etc.) |
 | `public/assets/seo/og-image.png` | Social share preview image |
 
@@ -112,12 +111,10 @@ Other files to customize:
 
 Screenshots live under `public/assets/projects-screenshots/<project-id>/`. Current projects:
 
-- [CallHQ.ai](https://callhq.ai)
-- [Broki](https://broki.in)
-- [CallHQ WhatsApp](https://whatsapp.callhq.ai)
-- [Orrdr](https://orrdr.com)
-- [Otoma8](https://otoma8.com)
-- [Tesoro by Sania](https://tesorobysania.com)
+- [Hostel Complaint Management System](https://hostel-complaint-system-amber.vercel.app/)
+- [To-Do List App](https://to-do-list-app-beta-neon.vercel.app/signin.html)
+- [Inside a Computer](https://inside-a-computer-jet.vercel.app)
+- [Linear Search Visualizer](https://sherayvatsya.github.io/Linaer-Search/applications.html)
 
 ---
 
@@ -160,7 +157,7 @@ These features activate automatically when the `NEXT_PUBLIC_WS_URL` environment 
 
 ## 🚀 Deployment
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/akashrmalhotra/3d-portfolio-next)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/sherayvatsya/3d-portfolio-next)
 
 This site is deployed on **Vercel**. To deploy your own:
 

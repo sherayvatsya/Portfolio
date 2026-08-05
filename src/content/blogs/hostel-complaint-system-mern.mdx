@@ -1,0 +1,76 @@
+---
+title: "Hostel Complaint System (MERN)"
+publishedAt: "2026-07-27"
+summary: "How I replaced a paper-based system with a fully deployed MERN stack application for logging and tracking maintenance issues."
+tags:
+  - "MERN"
+  - "Node.js"
+  - "React"
+  - "Full-stack"
+---
+
+Living in a college hostel comes with its fair share of maintenance issues—from broken fans to leaky faucets. The standard procedure? Write your complaint on a piece of paper, drop it in a box, and hope for the best. 
+
+It was inefficient, lacked transparency, and requests often got lost. As a first-year Computer Science student, I saw an opportunity to solve a real-world problem right in my backyard. That’s how the **Hostel Complaint Management System** was born.
+
+## The Problem
+
+The existing system had three major flaws:
+1. **No Tracking:** Students couldn’t see the status of their complaints.
+2. **Poor Management:** Wardens and maintenance staff had to sift through unorganized slips of paper.
+3. **Lack of Accountability:** Without a digital trail, it was impossible to know how long a repair took or if it was ever completed.
+
+## Choosing the MERN Stack
+
+To build a robust, scalable, and modern solution, I chose the MERN stack (MongoDB, Express.js, React, Node.js). 
+
+- **MongoDB:** A NoSQL database was perfect for storing flexible complaint documents that might vary slightly in structure.
+- **Express.js & Node.js:** Ideal for quickly building a RESTful API to handle user authentication, complaint submission, and status updates.
+- **React:** The component-based architecture allowed me to build a dynamic and responsive user interface for both students and administrators.
+
+## Designing the Architecture
+
+The application required distinct user roles:
+- **Students:** Can log in, submit complaints (with categories like Plumbing, Electrical, IT), and view the real-time status of their own requests.
+- **Administrators/Wardens:** Can view all complaints, update statuses (e.g., Pending, In Progress, Resolved), and assign them to specific maintenance staff.
+
+### The Backend (Node.js & Express)
+
+I structured the backend around REST principles. Here is a simplified version of the complaint schema using Mongoose:
+
+```javascript
+const mongoose = require('mongoose');
+
+const ComplaintSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  category: { type: String, enum: ['Plumbing', 'Electrical', 'Carpentry', 'IT', 'Other'], required: true },
+  status: { type: String, enum: ['Pending', 'In Progress', 'Resolved'], default: 'Pending' },
+  studentId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  roomNumber: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now },
+});
+
+module.exports = mongoose.model('Complaint', ComplaintSchema);
+```
+
+For authentication, I implemented JWT (JSON Web Tokens). This ensured that students could securely log in and only access their own data, while administrators had a broader view.
+
+### The Frontend (React)
+
+The frontend needed to be intuitive. I used React to create a dashboard-style interface. State management was handled using React Context, which was sufficient for managing the user's session and the list of complaints without adding the complexity of Redux.
+
+One of the biggest challenges was ensuring the app was fully responsive. Students are primarily accessing this on their phones while standing in their dorm rooms, so a mobile-first approach using Tailwind CSS was essential.
+
+## Challenges and Learnings
+
+Building a full-stack application from scratch is never without hurdles. 
+
+1. **State Synchronization:** Ensuring the frontend accurately reflected the backend state after a complaint was updated required careful management of API calls and local state.
+2. **Deployment:** Moving from `localhost` to a live production environment was a significant learning curve. I deployed the backend on Render and the frontend on Vercel, utilizing MongoDB Atlas for the database. Handling CORS issues and environment variables taught me a lot about production architecture.
+
+## The Impact
+
+Seeing the application go live and actually being used by peers was incredibly rewarding. It transformed a frustrating, opaque process into a transparent, digital workflow. 
+
+This project was more than just a coding exercise; it was my first foray into solving a tangible problem through software engineering. It solidified my understanding of the MERN stack and gave me the confidence to take on even more complex challenges in the future.

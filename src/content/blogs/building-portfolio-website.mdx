@@ -1,0 +1,73 @@
+---
+title: "Building My Portfolio Website"
+publishedAt: "2026-07-28"
+summary: "A deep dive into the technical decisions, animations, and responsive design behind my personal portfolio."
+tags:
+  - "React"
+  - "Tailwind CSS"
+  - "Frontend"
+  - "Web Design"
+---
+
+When I decided it was time to build a personal portfolio, I knew I didn't want just another generic template. As an aspiring Web & Software Developer, my portfolio needed to be a true reflection of my skills, my design aesthetic, and my technical approach. It had to be fast, responsive, and engaging—something that would leave a lasting impression.
+
+Here is a look under the hood at how I built this portfolio, the technical stack I chose, and the challenges I overcame along the way.
+
+## Choosing the Stack
+
+I am comfortable across the front-end stack—HTML5, CSS3, and JavaScript—but I wanted this project to push my boundaries and leverage modern frameworks. I decided to use **React** for its component-based architecture and robust ecosystem. 
+
+For styling, **Tailwind CSS** was the obvious choice. The utility-first approach allowed me to iterate quickly on the design without writing endless custom CSS classes. It also made implementing dark mode and responsive layouts an absolute breeze.
+
+## The Power of Animation
+
+A static website can quickly become boring. I wanted the portfolio to feel dynamic and alive. I integrated subtle micro-animations and scroll-triggered effects to keep users engaged as they navigate through my work. 
+
+```tsx
+// Example of a simple scroll-reveal animation
+import { motion } from "framer-motion";
+
+const FadeInContent = ({ children }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-50px" }}
+    transition={{ duration: 0.6 }}
+  >
+    {children}
+  </motion.div>
+);
+```
+
+These animations aren't just for show—they help guide the user's eye to key information, like my featured projects or my tech stack. However, I had to be careful not to overdo it. Too many animations can degrade performance, especially on lower-end devices. I spent considerable time optimizing the framer-motion variants and ensuring that the site remains buttery smooth across all platforms.
+
+## The Interactive Experience
+
+One of the standout features of the site is the interactive elements. I wanted the user experience to be intuitive but surprisingly delightful. For instance, the navigation menu features hover previews that give users a glimpse of where they are heading before they even click.
+
+I also focused heavily on the **Tech Stack** section. Initially, I experimented with a 3D interactive keyboard where each keycap represented a skill from my resume. While the 3D aspect was visually stunning, I eventually decided to pivot back to a clean, 2D grid layout. The 2D grid is significantly faster to load, more accessible, and aligns better with a clean, professional aesthetic while still maintaining engaging hover effects and glowing borders.
+
+## Responsive by Default
+
+A major priority was ensuring the site looked flawless on any screen size. With Tailwind, I used a mobile-first approach, setting baseline styles and then layering on medium (`md:`) and large (`lg:`) breakpoints.
+
+Testing on various devices revealed a few edge cases, particularly with the custom cursor and some absolute positioning. I implemented custom hooks to detect touch devices and disable the custom cursor on mobile, ensuring that the touch experience remained native and unobstructed.
+
+## Deployment and Optimization
+
+For deployment, I chose **Vercel**. Its seamless integration with React/Next.js and instant previews on pull requests made the CI/CD pipeline effortless. 
+
+Performance optimization was the final hurdle. I implemented:
+- **Lazy Loading:** For images and heavy components.
+- **Image Optimization:** Serving correctly sized Next.js `<Image />` components.
+- **Code Splitting:** Ensuring that only necessary JavaScript is loaded on initial paint.
+
+## Looking Ahead
+
+Building this portfolio was a fantastic learning experience. It allowed me to consolidate my knowledge of React and Tailwind while experimenting with advanced animation techniques. 
+
+The site is designed to be a living document. As I continue my journey, dive deeper into Node.js, Express, and MongoDB, and take on new internships and projects, this portfolio will evolve with me. 
+
+If you are looking to build your own portfolio, my biggest piece of advice is: **start simple, but make it yours.** Don't be afraid to experiment with the design until it feels right.
+
+Feel free to poke around the site, check out the source code on my GitHub, and connect with me on LinkedIn!

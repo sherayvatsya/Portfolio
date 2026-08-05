@@ -11,9 +11,6 @@ const nextConfig = {
     // Prevent Turbopack from picking a parent lockfile directory as the workspace root.
     root: __dirname,
   },
-  eslint: {
-    ignoreDuringBuilds: true
-  },
   async headers() {
     const securityHeaders = {
       source: "/(.*)",

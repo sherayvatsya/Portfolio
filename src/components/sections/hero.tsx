@@ -13,6 +13,16 @@ import { BlurIn, BoxReveal } from "../reveal-animations";
 import ScrollDownIcon from "../scroll-down-icon";
 import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
 import { config } from "@/data/config";
+import dynamic from "next/dynamic";
+
+const HeroCanvas = dynamic(() => import("@/components/hero3d/HeroCanvas"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="w-10 h-10 rounded-full border-2 border-purple-500/40 border-t-purple-400 animate-spin" />
+    </div>
+  ),
+});
 
 import SectionWrapper from "../ui/section-wrapper";
 
@@ -76,7 +86,7 @@ const HeroSection = () => {
                       "cursor-default sm:text-xl md:text-xl whitespace-nowrap bg-clip-text "
                     )}
                   >
-                    Co-Founder & Engineer
+                    {config.title.split("|")[1]?.trim() || "Web Developer & Software Developer"}
                   </p>
                 </BlurIn>
               </div>
@@ -106,14 +116,18 @@ const HeroSection = () => {
                     </TooltipContent>
                   </Tooltip>
                   <div className="flex items-center h-full gap-2">
-                    <Link
-                      href={config.social.twitter}
-                      target="_blank"
-                    >
-                      <Button variant={"outline"}>
-                        <SiX size={24} />
-                      </Button>
-                    </Link>
+                    {/* @ts-ignore */}
+                    {config.social.twitter && (
+                      <Link
+                        // @ts-ignore
+                        href={config.social.twitter}
+                        target="_blank"
+                      >
+                        <Button variant={"outline"}>
+                          <SiX size={24} />
+                        </Button>
+                      </Link>
+                    )}
                     <Link
                       href={config.social.github}
                       target="_blank"
@@ -138,7 +152,21 @@ const HeroSection = () => {
             </div>
           )}
         </div>
-        <div className="grid col-span-1"></div>
+        <div className="grid col-span-1 relative min-h-[420px] pt-6 md:pt-8 mt-4 z-[2]">
+          {!isLoading && (
+            <div
+              className="w-full h-full"
+              style={{
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 65% 65% at 50% 50%, #000 30%, transparent 90%)",
+                maskImage:
+                  "radial-gradient(ellipse 65% 65% at 50% 50%, #000 30%, transparent 90%)",
+              }}
+            >
+              <HeroCanvas />
+            </div>
+          )}
+        </div>
       </div>
       <div className="absolute bottom-10 left-[50%] translate-x-[-50%]">
         <ScrollDownIcon />
