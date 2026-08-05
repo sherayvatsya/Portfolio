@@ -1,41 +1,85 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
+# ==========================================
+# Dependencies
+# ==========================================
+node_modules/
+.pnp
 .pnp.js
+
+# Yarn
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
 .yarn/install-state.gz
 
-# testing
-/coverage
+# ==========================================
+# Build Output
+# ==========================================
+.next/
+out/
+build/
+dist/
 
-# next.js
-/.next/
-/out/
+# ==========================================
+# Testing
+# ==========================================
+coverage/
 
-# production
-/build
+# ==========================================
+# Environment Variables
+# ==========================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
 
-# misc
-.DS_Store
-*.pem
+# ==========================================
+# Vercel
+# ==========================================
+.vercel/
 
-# debug
+# ==========================================
+# Logs
+# ==========================================
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
-# local env files
-.env*.local
-
-# vercel
-.vercel
-
-# typescript
+# ==========================================
+# TypeScript
+# ==========================================
 *.tsbuildinfo
 next-env.d.ts
 
-src/app/(components)
+# ==========================================
+# IDE
+# ==========================================
+.vscode/
+.idea/
 
-# raw screenshot dump — source images; optimized versions live in each project dir
+# ==========================================
+# OS Files
+# ==========================================
+.DS_Store
+Thumbs.db
+
+# ==========================================
+# Certificates
+# ==========================================
+*.pem
+
+# ==========================================
+# Cache
+# ==========================================
+.cache/
+.turbo/
+.eslintcache
+
+# ==========================================
+# Raw Screenshots (Optional)
+# ==========================================
 public/assets/projects-screenshots/raw/
