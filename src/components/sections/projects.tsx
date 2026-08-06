@@ -42,7 +42,7 @@ const ProjectsSection = () => {
         )}
       </AnimatePresence> */}
 
-      <SectionHeader id="projects" title="Projects" />
+      <SectionHeader id="projects" title="Projects" className="mb-14" />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {projects.map((project) => (
           <div
