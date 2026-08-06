@@ -27,7 +27,7 @@ Modern 3D developer portfolio with immersive visuals, cinematic animations, and 
 
 ### Live Demo
 
-🔗 **Portfolio:** https://portfolio-nu-navy-20.vercel.app/#skills
+🔗 **Portfolio:** https://portfolio-nu-navy-20.vercel.app/
 
 ---
 
@@ -134,7 +134,7 @@ These features activate automatically when the `NEXT_PUBLIC_WS_URL` environment 
 
 ## 🚀 Deployment
 
-🔗 **Portfolio:** https://portfolio-nu-navy-20.vercel.app/#skills
+🔗 **Portfolio:** https://portfolio-nu-navy-20.vercel.app/
 
 
 This site is deployed on **Vercel**. To deploy your own:
